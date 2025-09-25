@@ -16,7 +16,7 @@ params <- list(
   location = "american_samoa"
 )
 
-# Set up the authorization token (replace with your actual token)
+# Set up the authorization token
 auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"
 
 resp <- GET(
@@ -161,3 +161,4 @@ all_daily_summary
 output_file <- file.path(output_folder, paste0("as_mesonet_", gsub("-", "_", target_date), ".csv"))
 write.csv(all_daily_summary, output_file, row.names = FALSE)
 message("Daily summary with metadata saved to: ", output_file)
+
