@@ -8,8 +8,7 @@ library(lubridate)
 
 #set dirs
 mainDir <- "D:/PDKE"
-codeDir<-paste0(mainDir,"/american_samoa")
-parse_wd<-paste0(mainDir,"/american_samoa/NRT")
+codeDir<-paste0(mainDir,"/american_samoa/NRT")
 
 #set API
 auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"
@@ -130,9 +129,9 @@ all_daily_summary <- bind_rows(all_daily_summary) %>%
 all_daily_summary
 
 #write csv
-setwd(parse_wd)
-output_file <- paste0("as_mesonet_", gsub("-", "_", currentDate), ".csv")
+output_file <- paste0(codeDir,"/as_mesonet_", gsub("-", "_", currentDate), ".csv")
 write.csv(all_daily_summary, output_file, row.names = FALSE)
 message("Daily summary with metadata saved to: ", output_file)
+
 
 #end
