@@ -1,7 +1,17 @@
 American Samoa Daily Rainfall Maps Production
 
 Required R Packages:
-raster, sf, dplyr, gstat, Metrics, readr, stringr, httr, lubridate, jsonlite
+   Package Version
+    raster  3.6-23
+        sf  1.0-14
+     dplyr   1.1.3
+     gstat   2.1-1
+   Metrics   0.1.4
+     readr   2.1.4
+   stringr   1.5.2
+      httr   1.4.7
+ lubridate   1.9.3
+  jsonlite   1.8.7
 
 Inputs:
 a. Data acquisition R scripts:
@@ -45,3 +55,4 @@ as_idw_meta_YYYYMMDD.txt - metadata/log for the IDW run (interpolation status, p
 NRT/as_idw_rf_table_NRT/
 
 daily_rainfall_station_AS_YYYY_MM_DD.csv - table of rainfall at each station used in the interpolation
+
