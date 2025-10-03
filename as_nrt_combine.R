@@ -8,8 +8,6 @@ library(stringr)
 #set dirs
 maindir<-"D:/PDKE/american_samoa"
 inputdir<-paste0(maindir,"/NRT")
-# output_folder <- file.path(input_folder, "all")  # subfolder 'all' for combined CSV
-# if (!dir.exists(output_folder)) dir.create(output_folder)
 
 #list csvs in input folder
 files <- list.files(
@@ -70,5 +68,6 @@ meso_goal <- meso_combined %>%
 output_file <- paste0(file_date_fmt, "_as_rf_idw_input.csv")
 write_csv(meso_goal, output_file)
 cat("Combined file saved to:", output_file, "\n")
+
 
 #end
