@@ -53,6 +53,4 @@ NRT/as_idw_rf_meta_NRT/
 as_idw_meta_YYYYMMDD.txt - metadata/log for the IDW run (interpolation status, parameters, error metrics)
 
 NRT/as_idw_rf_table_NRT/
-
 daily_rainfall_station_AS_YYYY_MM_DD.csv - table of rainfall at each station used in the interpolation
-
