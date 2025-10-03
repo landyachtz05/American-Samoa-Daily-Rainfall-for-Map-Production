@@ -8,11 +8,7 @@ library(lubridate)
 
 #set dirs
 mainDir <- "D:/PDKE"
-codeDir<-paste0(mainDir,"/american_samoa")
-parse_wd<-paste0(mainDir,"/american_samoa/NRT")
-# 
-# output_folder <- "F:/PDKE/american_samoa/rain_data/NRT"
-# if (!dir.exists(output_folder)) dir.create(output_folder)  # create folder if it doesn't exist
+codeDir<-paste0(mainDir,"/american_samoa/NRT")
 
 #function to fetch precipitation for one station for a given date range
 fetch_station <- function(stn, start_date, end_date) {
@@ -110,8 +106,7 @@ all_data_formatted <- all_data_formatted %>%
   select(station_id, SKN, Station.Name, Observer, Elev.m, LAT, LON, date, value, variable, completeness)
 
 #write csv
-setwd(parse_wd)
-output_file <- paste0("as_wrcc_", gsub("-", "_", currentDate), ".csv")
+output_file <- paste0(mainDir,"/as_wrcc_", gsub("-", "_", currentDate), ".csv")
 write.csv(all_data_formatted, output_file, row.names = FALSE)
 message("Daily summary with metadata saved to: ", output_file)
 
