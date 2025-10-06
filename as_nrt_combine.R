@@ -21,7 +21,9 @@ files <- list.files(
 )
 
 #get date from first filename
-file_date <- str_extract(basename(files[1]), "\\d{4}_\\d{2}_\\d{2}")
+#file_date <- str_extract(basename(files[1]), "\\d{4}_\\d{2}_\\d{2}")
+
+# USE DATE FUNCTION
 
 #convert date to YYYYMMDD format
 file_date_fmt <- gsub("_", "", file_date)
@@ -72,5 +74,6 @@ meso_goal <- meso_combined %>%
 output_file <- paste0(outDir,"/",file_date_fmt, "_as_rf_idw_input.csv")
 write_csv(meso_goal, output_file)
 cat("Combined file saved to:", output_file, "\n")
+
 
 #end
