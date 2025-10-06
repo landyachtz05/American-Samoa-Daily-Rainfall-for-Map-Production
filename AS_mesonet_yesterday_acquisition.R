@@ -7,14 +7,20 @@ library(dplyr)
 library(lubridate)
 
 #set dirs
-mainDir <- "D:/PDKE/american_samoa/NRT"
+#mainDir <- "D:/PDKE/american_samoa/NRT"
+
+mainDir <- Sys.getenv("PROJECT_ROOT")
+
 outDir<-paste0(mainDir,"/as_individual_data")
 
 #ensure empty output folder
-unlink(file.path(outDir, "*"), recursive = TRUE)
+#unlink(file.path(outDir, "*"), recursive = TRUE)
 
 #set API
-auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"
+#auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"
+
+hcdpToken <- Sys.getenv("HCDP_TOKEN")
+
 station_ids <- c("1311", "1312", "1313", "1316", "1319")
 var_id <- "RF_1_Tot300s"
 tz_local <- "Pacific/Pago_Pago"
@@ -135,5 +141,6 @@ all_daily_summary
 output_file <- paste0(outDir,"/as_mesonet_", gsub("-", "_", currentDate), ".csv")
 write.csv(all_daily_summary, output_file, row.names = FALSE)
 message("Daily summary with metadata saved to: ", output_file)
+
 
 #end
