@@ -8,7 +8,6 @@ library(lubridate)
 
 #set dirs
 mainDir <- Sys.getenv("PROJECT_ROOT")
-setwd(mainDir)
 outDir<-paste0(mainDir,"/as_individual_data")
 
 #ensure empty output folder

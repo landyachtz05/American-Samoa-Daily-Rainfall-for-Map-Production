@@ -7,7 +7,6 @@ library(stringr)
 
 #set dirs
 mainDir <- Sys.getenv("PROJECT_ROOT")
-setwd(mainDir)
 inDir<-paste0(mainDir,"/as_individual_data")
 outDir<-paste0(mainDir,"/as_combined_data")
 
@@ -27,10 +26,9 @@ dataDate<-dataDateMkr() #function for importing/defining date as input or as yes
 file_date <-dataDate #dataDate as currentDate
 
 # USE DATE FUNCTION
-
 #convert date to YYYYMMDD format
-file_date_fmt <- gsub("_", "", file_date)
-
+file_date_fmt <- gsub("-", "", file_date)
+file_date_fmt
 #read csvs as characters to avoid type issues
 meso_list <- lapply(files, function(f) {
   read_csv(f, col_types = cols(.default = col_character()))
