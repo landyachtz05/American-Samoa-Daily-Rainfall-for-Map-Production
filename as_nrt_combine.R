@@ -21,8 +21,10 @@ files <- list.files(
   full.names = TRUE
 )
 
-#get date from first filename
-#file_date <- str_extract(basename(files[1]), "\\d{4}_\\d{2}_\\d{2}")
+#define date
+source(paste0(mainDir,"/as_dataDateFunc.R"))
+dataDate<-dataDateMkr() #function for importing/defining date as input or as yesterday
+file_date <-dataDate #dataDate as currentDate
 
 # USE DATE FUNCTION
 
