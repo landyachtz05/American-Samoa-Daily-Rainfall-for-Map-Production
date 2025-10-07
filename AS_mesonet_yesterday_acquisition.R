@@ -7,14 +7,12 @@ library(dplyr)
 library(lubridate)
 
 #set dirs
-#mainDir <- "D:/PDKE/american_samoa/NRT"
-
 mainDir <- Sys.getenv("PROJECT_ROOT")
-
+setwd(mainDir)
 outDir<-paste0(mainDir,"/as_individual_data")
 
 #ensure empty output folder
-#unlink(file.path(outDir, "*"), recursive = TRUE)
+unlink(file.path(outDir, "*"), recursive = TRUE)
 
 #set API
 #auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"

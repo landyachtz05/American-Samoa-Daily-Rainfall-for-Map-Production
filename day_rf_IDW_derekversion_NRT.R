@@ -11,7 +11,8 @@ library(Metrics)
 rm(list = ls())#remove all objects in R
 
 #set dirs
-mainDir <- "D:/PDKE/american_samoa/NRT"
+mainDir <- Sys.getenv("PROJECT_ROOT")
+setwd(mainDir)
 statDir <- paste0(mainDir,"/as_static_files")
 inDir <- paste0(mainDir,"/as_combined_data")
 source(paste0(mainDir,"/AS_RF_funcs.R")) # calls functions code

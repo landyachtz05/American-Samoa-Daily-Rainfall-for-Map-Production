@@ -7,7 +7,8 @@ library(dplyr)
 library(lubridate)
 
 #set dirs
-mainDir <- "D:/PDKE/american_samoa/NRT"
+mainDir <- Sys.getenv("PROJECT_ROOT")
+setwd(mainDir)
 outDir <- paste0(mainDir,"/as_individual_data")
 
 #function to fetch precipitation for one station for a given date range

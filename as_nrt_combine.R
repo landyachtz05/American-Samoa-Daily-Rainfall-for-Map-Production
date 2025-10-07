@@ -6,7 +6,8 @@ library(readr)
 library(stringr)
 
 #set dirs
-mainDir<-"D:/PDKE/american_samoa/NRT"
+mainDir <- Sys.getenv("PROJECT_ROOT")
+setwd(mainDir)
 inDir<-paste0(mainDir,"/as_individual_data")
 outDir<-paste0(mainDir,"/as_combined_data")
 
