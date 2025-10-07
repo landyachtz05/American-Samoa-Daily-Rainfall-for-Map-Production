@@ -12,6 +12,9 @@ inDir<-paste0(mainDir,"/as_static_files/as_gapfill_correlation_inputs")
 inDir2<-paste0(mainDir,"/as_gapfill_input")
 outDir<-paste0(mainDir,"/as_gapfilled_data")
 
+#ensure empty output dir
+unlink(file.path(outDir, "*"), recursive = TRUE)
+
 #Path to Input Files 
 Files =list.files(inDir) #Gets the names of all the files in your WorkingFolder
 nFiles=length(Files) #Counts the number of files to be processed

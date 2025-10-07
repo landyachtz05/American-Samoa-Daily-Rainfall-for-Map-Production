@@ -13,6 +13,7 @@ outDir2<-paste0(mainDir,"/as_gapfill_input")
 
 #ensure empty output dir
 unlink(file.path(outDir, "*"), recursive = TRUE)
+unlink(file.path(outDir2, "*"), recursive = TRUE)
 
 #list csvs in input folder
 files <- list.files(

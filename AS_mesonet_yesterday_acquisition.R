@@ -23,6 +23,8 @@ tz_local <- "Pacific/Pago_Pago"
 source(paste0(mainDir,"/as_dataDateFunc.R"))
 dataDate<-dataDateMkr() #function for importing/defining date as input or as yesterday
 currentDate<-dataDate #dataDate as currentDate
+# currentDate
+# currentDate<-"2025-10-01"
 
 #set expected daily data points and threshold
 expected <- 288
