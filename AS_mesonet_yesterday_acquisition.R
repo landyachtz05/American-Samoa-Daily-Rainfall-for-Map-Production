@@ -15,7 +15,6 @@ outDir<-paste0(mainDir,"/as_individual_data")
 unlink(file.path(outDir, "*"), recursive = TRUE)
 
 #set API
-#auth_token <- "Bearer c3c6c404f9aad7c5831b9b5e5319653a"
 auth_token <- Sys.getenv("API_TOKEN")
 station_ids <- c("1311", "1312", "1313", "1316", "1319")
 var_id <- "RF_1_Tot300s"
@@ -140,3 +139,4 @@ message("Daily summary with metadata saved to: ", output_file)
 
 
 #end
+
