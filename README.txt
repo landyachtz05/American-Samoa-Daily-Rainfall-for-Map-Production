@@ -20,20 +20,28 @@ NRT/AS_WRCC_yesterday_acquisition.R - pulls yesterday’s WRCC precipitation dai
 
 b. Data processing R scripts
 NRT/as_nrt_combine.R - merges Mesonet + WRCC data into one combined dataset.
+NRT/as_gapfill.R - gapfills combined dataset.
 NRT/day_rf_IDW_derekversion_NRT.R - runs IDW interpolation to create rainfall maps/rasters.
 
 c. Supporting R functions
 NRT/as_dataDateFunc.R - functions for calling yesterday's date.
 NRT/AS_RF_funcs.R - functions for rainfall interpolation.
 
-d. Static spatial inputs
+d. Static inputs
+NRT/as_static_files/as_daily_wide_template.csv - table with correct format for gapfilling output.
+NRT/as_static_files/as_rf_idw_input_template.csv - table with correct format for map viewer data table output.
 NRT/as_static_files/as_coastline.shp (+ .shx, .dbf, .prj, etc.) - shapefile of American Samoa coastline.
 NRT/as_static_files/as_mask3.tif - raster mask for clipping final output.
 NRT/as_static_files/as_prism_monthday/
-daily_01_mm.tif
-daily_02_mm.tif
-...
-daily_12_mm.tif - climatological baseline rasters (PRISM daily normals derived from monthly climatology maps).
+   daily_01_mm.tif
+   daily_02_mm.tif
+   ...
+   daily_12_mm.tif - climatological baseline rasters (PRISM daily normals derived from monthly climatology maps).
+NRT/as_gapfill_correlation_inputs/
+   Name.aasu_UH.Input
+   Name.aasufou80.Input
+   ...
+   27 files total - tables with station correlation data for use in gapfilling
 
 Outputs:
 NRT/as_individual_data/:
@@ -53,4 +61,5 @@ NRT/as_idw_rf_meta_NRT/
 as_idw_meta_YYYYMMDD.txt - metadata/log for the IDW run (interpolation status, parameters, error metrics)
 
 NRT/as_idw_rf_table_NRT/
-daily_rainfall_station_AS_YYYY_MM_DD.csv - table of rainfall at each station used in the interpolation
+daily_rainfall_station_AS_YYYY_MM.csv - monthly aggregate of daily station data used for map viewer display
+
