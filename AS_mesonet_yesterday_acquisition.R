@@ -1,5 +1,9 @@
 ###### American Samoa Rainfall Data Acquisition - UH Mesonet
 
+rm(list = ls())  # Remove all objects
+lapply(paste0("package:", names(sessionInfo()$otherPkgs)), detach, character.only = TRUE, unload = TRUE)
+gc()  # Run garbage collection to clean memory
+
 #load packages
 library(httr)
 library(jsonlite)
@@ -23,8 +27,6 @@ tz_local <- "Pacific/Pago_Pago"
 source(paste0(mainDir,"/as_dataDateFunc.R"))
 dataDate<-dataDateMkr() #function for importing/defining date as input or as yesterday
 currentDate<-dataDate #dataDate as currentDate
-# currentDate
-# currentDate<-"2025-10-01"
 
 #set expected daily data points and threshold
 expected <- 288
