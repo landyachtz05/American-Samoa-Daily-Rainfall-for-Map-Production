@@ -9,6 +9,7 @@ library(stringr)
 mainDir <- Sys.getenv("PROJECT_ROOT")
 inDir<-paste0(mainDir,"/as_individual_data")
 outDir<-paste0(mainDir,"/as_combined_data")
+outDir2<-paste0(mainDir,"/as_gapfill_input")
 
 #ensure empty output dir
 unlink(file.path(outDir, "*"), recursive = TRUE)
@@ -76,5 +77,24 @@ output_file <- paste0(outDir,"/",file_date_fmt, "_as_rf_idw_input.csv")
 write_csv(meso_goal, output_file)
 cat("Combined file saved to:", output_file, "\n")
 
+###reformat for gapfilling input
+  #read template
+  temp<-read.csv(paste0(mainDir,"/as_static_files/as_daily_wide_template.csv"))
 
+  #convert date to MM/DD/YYYY format and replace column name
+  file_date_fmt2<-format(as.Date(file_date),"%m/%d/%Y")
+  colnames(temp)[colnames(temp) == "MM.DD.YYYY"] <- file_date_fmt2
+  
+  #fill table with rf values
+    #set column to fill
+    date_col <- file_date_fmt2
+    
+    #fill
+    temp[, date_col] <- meso_goal$total_rf_mm[match(temp$station_name, meso_goal$Station.Name)]
+
+  #write csv
+  output_file <- paste0(outDir2,"/",file_date_fmt, "_wide.csv")
+  write_csv(temp, output_file)
+  cat("File saved to:", output_file, "\n")
+  
 #end
