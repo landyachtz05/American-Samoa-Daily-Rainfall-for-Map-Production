@@ -8,7 +8,7 @@ library(stringr)
 # ---- Directories ----
 mainDir <- Sys.getenv("PROJECT_ROOT")
 inDir  <- paste0(mainDir,"as_idw_rf_ras_NRT_month")
-inDir2 <- paste0(mainDir,"as_monthly_mask")
+inDir2 <- paste0(mainDir,"as_static_files")
 outDir <- paste0(mainDir,"as_monthly_map")
 dir.create(outDir, showWarnings = FALSE)
 
