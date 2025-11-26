@@ -10,6 +10,13 @@ library(lubridate)
 mainDir <- Sys.getenv("PROJECT_ROOT")
 outDir <- paste0(mainDir,"/as_individual_data")
 
+# create empty output folder
+if (dir.exists(outDir)) {
+  file.remove(list.files(outDir, full.names = TRUE))
+} else {
+  dir.create(outDir, recursive = TRUE)
+}
+
 #function to fetch precipitation for one station for a given date range
 fetch_station <- function(stn, start_date, end_date) {
   message("Fetching station: ", stn, " (", start_date, " to ", end_date, ")")  # log progress
