@@ -63,3 +63,32 @@ as_idw_meta_YYYYMMDD.txt - metadata/log for the IDW run (interpolation status, p
 NRT/as_idw_rf_table_NRT/
 daily_rainfall_station_AS_YYYY_MM.csv - monthly aggregate of daily station data used for map viewer display
 
+#####################################################################################################################
+
+American Samoa Monthly Rainfall Maps Production
+
+Required R Packages:
+   Package Version
+    raster  3.6-23
+     dplyr   1.1.3
+   stringr   1.5.2
+ lubridate   1.9.3
+     tidyr   1.3.1
+
+Inputs:
+a. Monthly aggregation R scripts:
+NRT/as_monthly_rf/as_aggregate_monthly_data.R - calculates monthly precipition data from daily station values and appends to a wide-format annual data table
+b. NRT/as_monthly_rf/as_aggregate_monthly_maps.R - calculates monthly precipitation maps from daily maps
+
+c. Supporting R functions
+NRT/as_dataDateFunc.R - functions for calling yesterday's date
+
+d. Static inputs
+NRT/as_monthly_rf/as_monthly_mask.tif - raster mask for clipping monthly precipitation raster final output
+
+Outputs:
+NRT/as_monthly_rf/
+monthly_rainfall_station_AS_YYYY.csv - Annual aggregate of monthly station data used for map viewer display
+
+NRT/as_monthly_rf/as_monthly_map/
+rf_sum_YYYYMM - GeoTiff raster of monthly rainfall
