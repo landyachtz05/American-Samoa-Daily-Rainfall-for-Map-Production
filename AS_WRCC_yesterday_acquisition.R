@@ -10,10 +10,14 @@ library(lubridate)
 mainDir <- Sys.getenv("PROJECT_ROOT")
 outDir <- paste0(mainDir,"/as_individual_data")
 
-# create empty output folder
-if (dir.exists(outDir)) {
-  file.remove(list.files(outDir, full.names = TRUE))
-} else {
+# # create empty output folder
+# if (dir.exists(outDir)) {
+#   file.remove(list.files(outDir, full.names = TRUE))
+# } else {
+#   dir.create(outDir, recursive = TRUE)
+# }
+
+if (!dir.exists(outDir)) {
   dir.create(outDir, recursive = TRUE)
 }
 
