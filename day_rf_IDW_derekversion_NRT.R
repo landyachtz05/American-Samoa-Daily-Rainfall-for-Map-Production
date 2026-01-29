@@ -1,6 +1,14 @@
 ### Make daily RF maps from climatologically-aided interpolation using IDW and 
 ### optimized through LOOCV. Requires AS_RF_funcs.R functions code.
 
+# install.packages(c(
+#   "raster",
+#   "sf",
+#   "dplyr",
+#   "gstat",
+#   "Metrics"
+# ), dependencies = TRUE)
+
 #load packages
 library(raster)
 library(sf)
@@ -77,16 +85,16 @@ metadata$value <- as.character(metadata$value)
 }
 
 if (!is.null(best_idw_rf)) {
+  
   # Set raster background value to -9999
   best_idw_rf[is.na(best_idw_rf[])] <- -9999
-  
-  # Or more explicitly
-  best_idw_rf <- reclassify(best_idw_rf, cbind(NA, NA, -9999))
-  
+
   # Save raster
   raster_outfile <- paste0(mainDir,"/as_idw_rf_ras_NRT/as_idw_", date_str, ".tif")
   writeRaster(best_idw_rf, raster_outfile, overwrite = TRUE)
-
+  
+  message("RASTER_OUTFILE=", raster_outfile)
+  
   # Save metadata as a tab-separated text file
   meta_outfile <- paste0(mainDir,"/as_idw_rf_meta_NRT/as_idw_meta_", date_str, ".txt")
   write.table(metadata, meta_outfile, sep = "\t", row.names = FALSE, quote = FALSE)

@@ -14,15 +14,24 @@ library(lubridate)
 mainDir <- Sys.getenv("PROJECT_ROOT")
 outDir<-paste0(mainDir,"/as_individual_data")
 
-# create empty output folder
+# # create empty output folder
+# if (dir.exists(outDir)) {
+#   file.remove(list.files(outDir, full.names = TRUE))
+# } else {
+#   dir.create(outDir, recursive = TRUE)
+# }
+
+# create an empty output directory
 if (dir.exists(outDir)) {
-  file.remove(list.files(outDir, full.names = TRUE))
+  files_to_delete <- list.files(outDir, full.names = TRUE)
+  file.remove(files_to_delete)
 } else {
   dir.create(outDir, recursive = TRUE)
 }
 
 #set API
 auth_token <- Sys.getenv("API_TOKEN")
+auth_header <- paste("Bearer", auth_token)
 station_ids <- c("1311", "1312", "1313", "1316", "1319")
 var_id <- "RF_1_Tot300s"
 tz_local <- "Pacific/Pago_Pago"
@@ -39,7 +48,7 @@ threshold <- ceiling(expected * 0.95)
 #pull station metadata
 resp_meta <- GET(
   "https://api.hcdp.ikewai.org/mesonet/db/stations",
-  add_headers(Authorization = auth_token),
+  add_headers(Authorization = auth_header),
   query = list(location = "american_samoa")
 )
 
@@ -83,7 +92,7 @@ for (station in station_ids) {
   
   resp <- GET(
     "https://api.hcdp.ikewai.org/mesonet/db/measurements",
-    add_headers(Authorization = auth_token),
+    add_headers(Authorization = auth_header),
     query = list(
       station_ids = station,
       var_ids     = var_id,
@@ -94,7 +103,7 @@ for (station in station_ids) {
       row_mode    = "json"
     )
   )
-  
+
   if (status_code(resp) == 200) {
     data_raw <- fromJSON(content(resp, as = "text", encoding = "UTF-8"))
     if (length(data_raw) > 0 && "timestamp" %in% names(data_raw)) {
